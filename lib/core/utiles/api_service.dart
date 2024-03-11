@@ -8,7 +8,7 @@ class ApiService{
   ApiService(this.dio);
 
 
-  Future<Response> get({
+  Future<Map<String,dynamic>> get({
     required String url,
 })async{
   var response= await dio.get('$_baseUrl$url');
