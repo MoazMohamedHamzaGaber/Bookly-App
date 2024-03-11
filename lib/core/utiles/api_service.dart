@@ -1,11 +1,12 @@
 import 'package:dio/dio.dart';
 
 class ApiService{
-  final String _baseUrl='https://www.googleapis.com/books/v1';
+  final String _baseUrl='https://www.googleapis.com/books/v1/';
 
   final Dio dio;
 
-  ApiService({required this.dio});
+  ApiService(this.dio);
+
 
   Future<Response> get({
     required String url,
