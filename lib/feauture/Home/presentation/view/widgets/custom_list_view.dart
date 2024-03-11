@@ -32,10 +32,3 @@ class CustomListViewItem extends StatelessWidget {
     );
   }
 }
-// Container(
-// decoration: BoxDecoration(
-//
-// image: DecorationImage(
-// fit: BoxFit.fill,
-// image: NetworkImage())),
-// )
