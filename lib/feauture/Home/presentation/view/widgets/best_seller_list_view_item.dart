@@ -18,7 +18,7 @@ class BestSellerListViewItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const BookDetailsView(),
+            builder: (context) =>  BookDetailsView(items: items),
           ),
         );
       },
