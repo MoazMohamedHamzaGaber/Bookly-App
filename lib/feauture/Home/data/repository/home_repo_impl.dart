@@ -1,9 +1,10 @@
 import 'package:bookly/core/errors/failure.dart';
 import 'package:bookly/core/utiles/api_service.dart';
-import 'package:bookly/feauture/Home/data/models/book_model.dart';
+import 'package:bookly/feauture/Home/data/models/book_model/items.dart';
 import 'package:bookly/feauture/Home/data/repository/home_repo.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+
 
 class HomeReposImpl implements HomeRepos {
   final ApiService apiService;
@@ -12,11 +13,15 @@ class HomeReposImpl implements HomeRepos {
 
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks() async {
+  Future<Either<Failure, List<Items>>> fetchBestSellerBooks() async {
     try {
       var data= await apiService.get(url: 'volumes?Filtering=free-ebooks&Sorting=newest &q=programming');
 
-      return right(data['items']);
+      List<Items>books=[];
+      for(var item in data['items']){
+        books.add(Items.fromJson(item));
+      }
+      return right(books);
     } catch (e) {
       if(e is DioException) {
         return left(ServerFailure.fromDioError(e));
@@ -26,14 +31,13 @@ class HomeReposImpl implements HomeRepos {
   }
 
   @override
-  Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
+  Future<Either<Failure, List<Items>>> fetchFeaturedBooks() async {
     try {
       var data= await apiService.get(url: 'volumes?Filtering=free-ebooks&q=programming');
 
-      List<BookModel>books=[];
-      for(var item in data['items']){
-        books.add(BookModel.fromJson(item));
-      }
+      List<dynamic> items = data['items'];
+      List<Items> books = items.map((item) => Items.fromJson(item)).toList();
+
       return right(books);
     } catch (e) {
       if(e is DioException) {

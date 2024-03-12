@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import '../book_details_view.dart';
 
 class CustomListViewItem extends StatelessWidget {
-   const CustomListViewItem({Key? key}) : super(key: key);
+   const CustomListViewItem({Key? key, required this.imageUrl}) : super(key: key);
+   final  imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class CustomListViewItem extends StatelessWidget {
           child: CachedNetworkImage(
             //height: 200,
             fit: BoxFit.fill,
-            imageUrl: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+            imageUrl: imageUrl,
             errorWidget: (context, url, error) => const Icon(Icons.error_outline),
            ),
         ),

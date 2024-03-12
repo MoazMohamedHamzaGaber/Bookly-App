@@ -11,29 +11,31 @@ class FeatureBooksListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FeaturedBooksCubit,FeaturedBooksStates>(
-      builder: (BuildContext context, state) { 
-        if(state is FeaturedBooksSuccess) {
+    return BlocBuilder<FeaturedBooksCubit, FeaturedBooksStates>(
+      builder: (BuildContext context, state) {
+        if (state is FeaturedBooksSuccess) {
           return Padding(
-          padding: const EdgeInsets.only(
-            top: 30,
-          ),
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height *.28,
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) =>  const CustomListViewItem(),
-              separatorBuilder: (context,index)=>const SizedBox(
-                width: 15,
-              ),
-              itemCount: 10,
+            padding: const EdgeInsets.only(
+              top: 30,
             ),
-          ),
-        );
-        } else if(state is FeaturedBooksError){
+            child: SizedBox(
+              height: MediaQuery.of(context).size.height * .28,
+              child: ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => CustomListViewItem(
+                  imageUrl: state.books[index].volumeInfo.imageLinks!.thumbnail,
+                ),
+                separatorBuilder: (context, index) => const SizedBox(
+                  width: 15,
+                ),
+                itemCount: state.books.length,
+              ),
+            ),
+          );
+        } else if (state is FeaturedBooksError) {
           return CustomErrorWidget(text: state.errMessage);
-        } else{
+        } else {
           return const CustomLoading();
         }
       },
