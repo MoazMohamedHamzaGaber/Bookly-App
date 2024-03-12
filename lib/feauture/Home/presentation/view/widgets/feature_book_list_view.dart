@@ -24,7 +24,7 @@ class FeatureBooksListView extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => CustomListViewItem(
-                  imageUrl: state.books[index].volumeInfo.imageLinks!.thumbnail,
+                  items: state.books[index],
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 15,
