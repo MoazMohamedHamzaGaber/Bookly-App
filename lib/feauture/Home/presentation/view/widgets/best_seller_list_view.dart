@@ -1,5 +1,5 @@
 import 'package:bookly/core/errors/custom_error_vwdget.dart';
-import 'package:bookly/core/utiles/custom_Loading.dart';
+import 'package:bookly/core/loading/newest_Loading.dart';
 import 'package:bookly/feauture/Home/presentation/manage/newest_books_cubit/newest_books_cubit.dart';
 import 'package:bookly/feauture/Home/presentation/manage/newest_books_cubit/newest_books_states.dart';
 import 'package:bookly/feauture/Home/presentation/view/widgets/best_seller_list_view_item.dart';
@@ -25,7 +25,7 @@ class BestSellerListView extends StatelessWidget {
         } else if (state is NewestBooksError) {
           return CustomErrorWidget(text: state.errMessage);
         } else {
-          return const CustomLoading(isLoading: true,);
+          return const NewestLoading();
         }
       },
     );
