@@ -1,11 +1,13 @@
 import 'package:bookly/core/utiles/constants.dart';
 import 'package:bookly/core/utiles/style.dart';
+import 'package:bookly/feauture/Home/data/models/book_model/items.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class BookActionBottom extends StatelessWidget {
-   const BookActionBottom({Key? key}) : super(key: key);
+   const BookActionBottom({Key? key, required this.items}) : super(key: key);
 
+   final Items items;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +34,7 @@ class BookActionBottom extends StatelessWidget {
           Expanded(
             child: buildMaterialApp(
               function: ()async{
-                Uri uri=Uri.parse('items.volumeInfo!.previewLink!');
+                Uri uri=Uri.parse(items.volumeInfo.previewLink!);
                 if( await canLaunchUrl(uri))
                   {
                     launchUrl(uri);
