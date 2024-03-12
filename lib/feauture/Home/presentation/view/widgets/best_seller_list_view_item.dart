@@ -1,4 +1,5 @@
 import 'package:bookly/core/utiles/style.dart';
+import 'package:bookly/feauture/Home/data/models/book_model/items.dart';
 import 'package:bookly/feauture/Home/presentation/view/widgets/book_rating.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +7,9 @@ import 'package:flutter/material.dart';
 import '../book_details_view.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
-   const BestSellerListViewItem({Key? key}) : super(key: key);
+   const BestSellerListViewItem({Key? key, required this.items}) : super(key: key);
+
+  final Items items;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +38,7 @@ class BestSellerListViewItem extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl: 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg',
+                  imageUrl: items.volumeInfo.imageLinks!.thumbnail,
                   errorWidget: (context, url, error) => const Icon(Icons.error_outline),
                 ),
               ),
@@ -49,8 +52,8 @@ class BestSellerListViewItem extends StatelessWidget {
                 children: [
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
-                    child: const Text(
-                      'Digital Image Proccessing',
+                    child:  Text(
+                      items.volumeInfo.title!,
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Style.textStyle20,
@@ -60,7 +63,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    'Moaz Hamza',
+                    items.volumeInfo.authors![0],
                     style: Style.textStyle14.copyWith(
                       color: const Color(0xff707070),
                     ),
@@ -78,7 +81,10 @@ class BestSellerListViewItem extends StatelessWidget {
                         ),
                       ),
                       const Spacer(),
-                       const BookRating(),
+                     BookRating(
+                         rating: items.volumeInfo.averageRating ??0,
+                       count: items.volumeInfo.ratingsCount ??0,
+                     ),
                       const SizedBox(
                         width: 30,
                       ),
