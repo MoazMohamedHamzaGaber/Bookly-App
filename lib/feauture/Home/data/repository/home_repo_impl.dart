@@ -14,15 +14,12 @@ class HomeReposImpl implements HomeRepos {
 
   @override
   Future<Either<Failure, List<Items>>> fetchBestSellerBooks() async {
-    try {
-      var data= await apiService.get(url: 'volumes?Filtering=free-ebooks&Sorting=newest &q=programming');
-
-      List<Items>books=[];
-      for(var item in data['items']){
-        books.add(Items.fromJson(item));
-      }
-      return right(books);
-    } catch (e) {
+    try{
+      var data=await apiService.get(url: 'volumes?Filtering=free-ebooks&Sorting=newest &q=computer science');
+      List<dynamic> items = data['items'];
+      List<Items>bestSellerBooks= items.map((item) => Items.fromJson(item)).toList();
+      return right(bestSellerBooks);
+    }catch (e){
       if(e is DioException) {
         return left(ServerFailure.fromDioError(e));
       }
