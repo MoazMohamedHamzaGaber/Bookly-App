@@ -24,7 +24,7 @@ class FeatureBooksListView extends StatelessWidget {
                 physics: const BouncingScrollPhysics(),
                 scrollDirection: Axis.horizontal,
                 itemBuilder: (context, index) => CustomListViewItem(
-                  imageUrl: state.books[index].volumeInfo.imageLinks!.thumbnail,
+                  items: state.books[index],
                 ),
                 separatorBuilder: (context, index) => const SizedBox(
                   width: 15,
@@ -36,7 +36,7 @@ class FeatureBooksListView extends StatelessWidget {
         } else if (state is FeaturedBooksError) {
           return CustomErrorWidget(text: state.errMessage);
         } else {
-          return const CustomLoading();
+          return const CustomLoading(isLoading: false,);
         }
       },
     );

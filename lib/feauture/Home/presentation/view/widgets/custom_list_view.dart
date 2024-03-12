@@ -1,11 +1,12 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/models/book_model/items.dart';
 import '../book_details_view.dart';
 
 class CustomListViewItem extends StatelessWidget {
-   const CustomListViewItem({Key? key, required this.imageUrl}) : super(key: key);
-   final  imageUrl;
+   const CustomListViewItem({Key? key, required this.items}) : super(key: key);
+   final Items items;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class CustomListViewItem extends StatelessWidget {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const BookDetailsView(),
+            builder: (context) =>  BookDetailsView(items: items),
           ),
         );
       },
@@ -25,7 +26,7 @@ class CustomListViewItem extends StatelessWidget {
           child: CachedNetworkImage(
             //height: 200,
             fit: BoxFit.fill,
-            imageUrl: imageUrl,
+            imageUrl: items.volumeInfo.imageLinks!.thumbnail,
             errorWidget: (context, url, error) => const Icon(Icons.error_outline),
            ),
         ),
