@@ -18,10 +18,6 @@ class BestSellerListView extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemBuilder: (context, index) => BestSellerListViewItem(
-              // imageUrl: state.books[index].volumeInfo.imageLinks!.thumbnail,
-              // title: state.books[index].volumeInfo.title!,
-              // author: state.books[index].volumeInfo.authors![0],
-              // rating: '10',
               items: state.books[index],
             ),
             itemCount: state.books.length,
@@ -29,7 +25,7 @@ class BestSellerListView extends StatelessWidget {
         } else if (state is NewestBooksError) {
           return CustomErrorWidget(text: state.errMessage);
         } else {
-          return const CustomLoading();
+          return const CustomLoading(isLoading: true,);
         }
       },
     );
