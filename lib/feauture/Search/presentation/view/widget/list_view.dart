@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../Home/presentation/view/widgets/best_seller_list_view_item.dart';
 
 class ListViews extends StatelessWidget {
   const ListViews({Key? key}) : super(key: key);
@@ -9,7 +8,10 @@ class ListViews extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemBuilder:(context,index)=>const BestSellerListViewItem(),
+      // itemBuilder:(context,index)=>  BestSellerListViewItem(
+      //   items: BookMod,
+      // ),
+      itemBuilder:(context,index)=>  Text('data'),
       itemCount:10,
     );
   }
