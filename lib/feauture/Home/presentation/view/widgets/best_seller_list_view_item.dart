@@ -53,7 +53,7 @@ class BestSellerListViewItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .5,
                     child:  Text(
-                      items.volumeInfo.title!,
+                      items.volumeInfo.title ??'',
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       style: Style.textStyle20,
@@ -63,7 +63,7 @@ class BestSellerListViewItem extends StatelessWidget {
                     height: 3,
                   ),
                   Text(
-                    items.volumeInfo.authors![0],
+                    items.volumeInfo.authors?[0] ?? '',
                     style: Style.textStyle14.copyWith(
                       color: const Color(0xff707070),
                     ),
