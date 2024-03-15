@@ -6,6 +6,7 @@ import 'package:bookly/feauture/Search/presentation/view/widget/search_app_bar.d
 import 'package:bookly/feauture/Search/presentation/view/widget/search_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../../../core/utiles/style.dart';
 import 'list_view.dart';
 
 class SearchViewBody extends StatelessWidget {
@@ -22,11 +23,16 @@ class SearchViewBody extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SearchTextField(cubit: cubit,),
+                  SearchTextField(cubit: cubit),
                   const SizedBox(
                     height: 20,
                   ),
+                  if(state is SearchSuccess)
+                    const Text('Search Result',
+                      style: Style.textStyle20,
+                    ),
                   const ListViews(),
                 ],
               ),
