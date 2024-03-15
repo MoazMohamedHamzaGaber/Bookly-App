@@ -64,8 +64,12 @@ dev_dependencies:
 
 flutter_native_splash:
   color: "#100B20"
-  image: assets/images/Logo.png
+  image: assets/images/logo_icon.png
   android_gravity: center
+  android_12:
+    color: "#100B20"
+    image: assets/images/logo_icon.png
+    android_gravity: center
 
 flutter_launcher_icons:
   android: "launcher_icon"
