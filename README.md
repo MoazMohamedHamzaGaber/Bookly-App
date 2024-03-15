@@ -11,7 +11,6 @@ Bookly : This application is used to display books for free.
 ✅ Repository pattern
 ✅ MVVM architecture
 ✅ Cached Network Image
-✅ Go Router
 ✅ Equatable
 ✅ dartz
 ✅ dio
