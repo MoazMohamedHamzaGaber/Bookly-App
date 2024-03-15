@@ -22,6 +22,7 @@ class BookDetailsViewBody extends StatelessWidget {
                 horizontal: 30,
               ),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const CustomBookDetailsAppBar(),
                   BookDetailsSection(
