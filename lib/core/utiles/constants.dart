@@ -22,3 +22,5 @@ Widget buildMaterialApp({
     ),
   ),
 );
+
+var searchController=TextEditingController();
