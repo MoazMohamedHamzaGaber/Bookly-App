@@ -1,5 +1,5 @@
-Bookly : This application is used to display books for free
-باستخدام #flutter
+Bookly : This application is used to display books for free.
+
 #This_App_included
 ✅ Splash Screen
 ✅ Home Screen
